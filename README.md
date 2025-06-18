@@ -1,36 +1,36 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+HI This project is a solution to a Web Engineer coding assessment, built using Next.js 14 (App Router) with TypeScript, Tailwind CSS, and mock APIs. It includes a collapsible responsive navbar, a multi-step login flow with security logic, and a protected dashboard with dynamic data rendering
 
-## Getting Started
+Project layout Map:
+app/
+├── layout.tsx              # Global layout with Navbar
+├── page.tsx                # Home page
+├── login/page.tsx          # Multi-step login flow
+├── dashboard/page.tsx      # Post-login dashboard
+├── api/
+│   ├── getSecureWord/      # Secure word generation API
+│   ├── login/              # Login validation API
+│   ├── verifyMfa/          # MFA verification API
+│   └── transaction-history/ # Mock data for dashboard table
+components/
+└── Navbar.tsx  
 
-First, run the development server:
+Challenge 1: Navbar
+Title & search input (no logic)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Collapsible menu (hamburger/X toggle)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Login button linking to login page
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Responsive for mobile/desktop
+Challenge 2: Multi-Step Login Flow
+Step 1: Username input → /api/getSecureWord
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Step 2: Password input (hashed) → /api/login
 
-## Learn More
+Step 3: MFA with 6-digit mock code → /api/verifyMfa
 
-To learn more about Next.js, take a look at the following resources:
+Secure word expires in 60s
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Rate limit enforced (10s)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Session is mocked via localStorage
